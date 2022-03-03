@@ -21,4 +21,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{branch_name}}
+          ref: ${{inputs.branch_name}}
