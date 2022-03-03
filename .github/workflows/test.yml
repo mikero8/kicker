@@ -1,4 +1,4 @@
-name: Candid Web Deploy
+name: kicker test
 
 on: [push]
 
