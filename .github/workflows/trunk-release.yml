@@ -1,0 +1,17 @@
+name: Candid Web Deploy
+
+on: [push]
+
+env:
+  CACHE_PREFIX_NODE_MODULES: yarn_1.2
+  CACHE_PREFIX_NEXT: next_1.1
+
+jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: ./.github/workflows/test.yaml
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.envPAT }}
