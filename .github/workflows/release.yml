@@ -1,4 +1,4 @@
-name: kicker build
+name: Realse
 
 on: 
   workflow_call:

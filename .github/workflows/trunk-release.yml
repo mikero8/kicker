@@ -13,11 +13,11 @@ jobs:
       branch_name: main
 
   pre_releaes_job:
-    uses: mikero8/kicker/.github/workflows/pre-release.yml@main
+    uses: mikero8/kicker/.github/workflows/prepare-release.yml@main
     with:
       branch_name: main
 
   releaes_job:
-    uses: mikero8/kicker/.github/workflows/release.yml@main
+    uses: mikero8/kicker/.github/workflows/release.yml@main 
     with:
-      branch_name: main      
+      branch_name: main    
