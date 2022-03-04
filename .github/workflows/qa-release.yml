@@ -1,0 +1,21 @@
+name: Realse
+
+on: 
+  release:
+    types: [created]
+
+env:
+  CACHE_PREFIX_NODE_MODULES: yarn_1.2
+  CACHE_PREFIX_NEXT: next_1.1
+
+jobs:
+
+  build:
+    name: Deploy to QA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{inputs.branch_name}}
