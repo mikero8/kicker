@@ -7,7 +7,17 @@ env:
   CACHE_PREFIX_NEXT: next_1.1
 
 jobs:
-  reusable_workflow_job:
+  build_job:
     uses: mikero8/kicker/.github/workflows/build.yml@main
     with:
       branch_name: main
+
+  pre_releaes_job:
+    uses: mikero8/kicker/.github/workflows/pre-release.yml@main
+    with:
+      branch_name: main
+
+  releaes_job:
+    uses: mikero8/kicker/.github/workflows/release.yml@main
+    with:
+      branch_name: main      
