@@ -2,7 +2,7 @@ name: Realse
 
 on: 
   release:
-    types: [published]
+    types: [released]
 
 env:
   CACHE_PREFIX_NODE_MODULES: yarn_1.2
