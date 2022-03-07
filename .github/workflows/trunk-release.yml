@@ -12,8 +12,19 @@ jobs:
     with:
       branch_name: main
 
-  pre_releaes_job:
+  prepase_releaes_job:
     needs: build_job
     uses: mikero8/kicker/.github/workflows/prepare-release.yml@main
     with:
       branch_name: main
+
+  notify_slack:
+    needs: prepase_releaes_job
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: ./.github/workflows/slack-notification.yaml
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.envPAT }}          
+          branch_name: main
