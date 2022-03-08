@@ -16,7 +16,8 @@ jobs:
       branch_name: main
 
   echo_variable:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest   
+    needs: build_job_for_qa
     steps:
       - name: Echo deployment variables
         id: echo_deploy_vars
@@ -26,6 +27,7 @@ jobs:
 
   deploy_to_qa:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
+    needs: build_job_for_qa
     with:
       build_env: ${{ needs.build_job_for_qa.outputs.build_env }}
       target_bucket:  ${{ needs.build_job_for_qa.outputs.target_bucket }}
