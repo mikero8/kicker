@@ -14,6 +14,14 @@ jobs:
     with:
       branch_name: main
 
+  echo_variable:
+    steps:
+      - name: Echo deployment variables
+        id: echo_deploy_vars
+        run: |
+          echo ${{ needs.build_job.outputs.build_env }}
+          echo ${{ needs.build_job.outputs.target_bucket }}
+
   deploy_to_prod:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
     with:
