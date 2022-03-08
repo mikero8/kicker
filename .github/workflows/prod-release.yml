@@ -14,7 +14,7 @@ jobs:
     with:
       branch_name: main
 
-  deploy_for_prod:
+  deploy_to_prod:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
     with:
       branch_env: ${{ needs.build_job.outputs.branch_env }}

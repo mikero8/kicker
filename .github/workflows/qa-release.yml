@@ -1,4 +1,4 @@
-name: Realse to qa
+name: Realse to QA
 
 on: 
   release:
