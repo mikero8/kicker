@@ -15,6 +15,7 @@ jobs:
       branch_name: main
 
   echo_variable:
+    runs-on: ubuntu-latest
     steps:
       - name: Echo deployment variables
         id: echo_deploy_vars
