@@ -17,5 +17,5 @@ jobs:
   deploy_to_prod:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
     with:
-      branch_env: ${{ needs.build_job.outputs.branch_env }}
+      build_env: ${{ needs.build_job.outputs.build_env }}
       target_bucket:  ${{ needs.build_job.outputs.target_bucket }}
