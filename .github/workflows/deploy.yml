@@ -23,7 +23,7 @@ jobs:
       - name: echo branch name
         id: get_branch_name
         run: |
-          echo ${{GITHUB_REF}}
+          echo ${GITHUB_REF}
           
       - name: Echo deployment variables
         id: echo_deploy_vars
