@@ -6,19 +6,34 @@ on:
       branch_name:
         required: true
         type: string
+    outputs:
+      build_env:
+        description: "build environment"
+        value: ${{ jobs.build.outputs.build_env }}
+      target_bucket:
+        description: "target bucket"
+        value: ${{ jobs.build.outputs.target_bucket }}
 
 env:
   CACHE_PREFIX_NODE_MODULES: yarn_1.2
   CACHE_PREFIX_NEXT: next_1.1
 
 jobs:
-
   build:
     name: Build website
     runs-on: ubuntu-latest
+    outputs:
+      build_env: ${{ steps.set_deploy_vars.outputs.build_env }}
+      target_bucket: ${{ steps.set_deploy_vars.outputs.target_bucket }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: ${{inputs.branch_name}}
+
+      - name: Set deployment variables
+        id: set_deploy_vars
+        run: |
+          echo ::set-output name=build_env::prod
+          echo ::set-output name=target_bucket::prod

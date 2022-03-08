@@ -1,0 +1,27 @@
+name: kicker build
+
+on: 
+  workflow_call:
+    inputs:
+      build_env:
+        required: true
+        type: string
+      target_bucket:
+        required: true
+        type: string
+
+env:
+  CACHE_PREFIX_NODE_MODULES: yarn_1.2
+  CACHE_PREFIX_NEXT: next_1.1
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo deployment variables
+        id: echo_deploy_vars
+        run: |
+          echo ${{inputs.build_env}}
+          echo ${{inputs.target_bucket}}

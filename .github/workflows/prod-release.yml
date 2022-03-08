@@ -9,13 +9,13 @@ env:
   CACHE_PREFIX_NEXT: next_1.1
 
 jobs:
+  build_job:
+    uses: mikero8/kicker/.github/workflows/build.yml@main
+    with:
+      branch_name: main
 
-  build:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{inputs.branch_name}}
+  deploy:
+    uses: mikero8/kicker/.github/workflows/deploy.yml@main
+    with:
+      branch_env: ${{ needs.build_job.outputs.branch_env }}
+      target_bucket:  ${{ needs.build_job.outputs.target_bucket }}
