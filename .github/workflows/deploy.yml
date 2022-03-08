@@ -1,4 +1,4 @@
-name: kicker build
+name: kicker deployment
 
 on: 
   workflow_call:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: branch name
+      - name: echo branch name
         id: get_branch_name
         run: |
           echo ${{GITHUB_REF}}
