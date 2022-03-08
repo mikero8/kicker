@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-       - name: branch name
-         id: get_branch_name
-         run: |
+      - name: branch name
+        id: get_branch_name
+        run: |
           echo ${{GITHUB_REF}}
           
       - name: Echo deployment variables

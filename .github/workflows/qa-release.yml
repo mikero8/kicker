@@ -1,4 +1,4 @@
-name: Realse
+name: Realse to qa
 
 on: 
   release:
@@ -10,12 +10,12 @@ env:
 
 jobs:
 
-  build_job:
+  build_job_for_qa:
     uses: mikero8/kicker/.github/workflows/build.yml@main
     with:
       branch_name: main
 
-  deploy:
+  deploy_to_qa:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
     with:
       branch_env: ${{ needs.build_job.outputs.branch_env }}

@@ -1,4 +1,4 @@
-name: Realse
+name: Realse to prod
 
 on: 
   release:
@@ -9,12 +9,12 @@ env:
   CACHE_PREFIX_NEXT: next_1.1
 
 jobs:
-  build_job:
+  build_job_for_prod:
     uses: mikero8/kicker/.github/workflows/build.yml@main
     with:
       branch_name: main
 
-  deploy:
+  deploy_for_prod:
     uses: mikero8/kicker/.github/workflows/deploy.yml@main
     with:
       branch_env: ${{ needs.build_job.outputs.branch_env }}
